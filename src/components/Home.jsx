@@ -1,11 +1,17 @@
 import React from 'react'
 
 function Home() {
+    function again(e){
+        if(!e || e.key === "Enter" || e.key === " "){
+            window.location = "game"
+        }
+    }
+    window.document.addEventListener('keypress',e => again(e))
     return (
         <div>
-            <title>spaeship</title>
-            <h1>spaeship</h1>
-            <button onClick={()=> window.location = "game"}>play</button>
+            <title>Catch game</title>
+            <h1>Catch game</h1>
+            <button onClick={()=> again(null)}>play</button>
         </div>
     )
 }

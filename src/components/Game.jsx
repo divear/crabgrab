@@ -51,6 +51,7 @@ function Game() {
         c.fillRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
       }, 100);
     
+
       
     }
     function move(e){
