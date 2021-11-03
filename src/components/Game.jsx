@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 
 const l = Math.floor(Math.random() * 50);
 const canvasColor = 'hsl(240, 50%,' + l + '%)';
-var ec = 0
+
 
 const blockSize = 50
 var size = Math.round(window.innerHeight/140)*(blockSize*2.7)
@@ -14,6 +14,7 @@ var playerCoords = {
 var enemyCoords = {}
 
 function Game() {
+    const [inter, setInter] = useState(500)
     const canvasRef = useRef(null)
 
     //initial draw
@@ -49,9 +50,9 @@ function Game() {
         }
 
         c.fillRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
-      }, 100);
-    
-
+        setInter(inter+10)
+        console.log(inter);
+      }, inter);
       
     }
     function move(e){
@@ -75,6 +76,13 @@ function Game() {
         }
         c.fillStyle = "#378f83"
        c.fillRect(playerCoords.x,playerCoords.y, blockSize, blockSize);
+
+      if(JSON.stringify(enemyCoords) === JSON.stringify(playerCoords)){
+        enemyCoords = {
+          x: Math.round(Math.random()*size/50)*50,
+          y: 0
+        }
+      }
   
       
     }

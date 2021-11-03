@@ -2,7 +2,7 @@ import React from 'react'
 
 function Fail() {
     function again(e){
-        if(!e || e.key === "Enter" || e.key === " "){
+        if(e === null || e.key === "Enter" || e.key === " "){
             window.location = "game"
         }
     }
