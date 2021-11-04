@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
+import alien from "./imgs/alien.png"
 
 
 const l = Math.floor(Math.random() * 50);
 const canvasColor = 'hsl(240, 50%,' + l + '%)';
+
+const enemyImg = new Image()
+enemyImg.src = alien
 
 
 const blockSize = 50
@@ -27,7 +31,7 @@ function Game() {
         x: Math.round(Math.random()*size/50)*50,
         y: 0
       }
-      c.fillRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+      c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
 
       
       setInterval(() => {
@@ -49,7 +53,7 @@ function Game() {
           return
         }
 
-        c.fillRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+        c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
         setInter(inter+10)
         console.log(inter);
       }, inter);
@@ -83,7 +87,6 @@ function Game() {
           y: 0
         }
       }
-  
       
     }
     useEffect(() => {
