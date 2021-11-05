@@ -1,5 +1,8 @@
 import React from 'react'
 
+
+const score = localStorage.getItem("score")
+
 function Fail() {
     function again(e){
         if(e === null || e.key === "Enter" || e.key === " "){
@@ -11,6 +14,7 @@ function Fail() {
         <div>
             <title>Game over</title>
             <h1>Game over</h1>
+            <h1>Score: {score}</h1>
             <button onClick={()=> again(null)}>Try again.</button>
         </div>
     )

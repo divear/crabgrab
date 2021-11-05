@@ -4,6 +4,7 @@ import alien from "./imgs/alien.png"
 
 const l = Math.floor(Math.random() * 50);
 const canvasColor = 'hsl(240, 50%,' + l + '%)';
+var score = 0
 
 const enemyImg = new Image()
 enemyImg.src = alien
@@ -16,6 +17,7 @@ var playerCoords = {
   y: 600
 }
 var enemyCoords = {}
+
 
 function Game() {
     const [inter, setInter] = useState(500)
@@ -42,14 +44,13 @@ function Game() {
           y: enemyCoords.y + blockSize
         }
         if(enemyCoords.y > size){
+          localStorage.setItem("score", score)
           window.location = "fail"
+          return
         }
 
         if(JSON.stringify(enemyCoords) === JSON.stringify(playerCoords)){
-          enemyCoords = {
-            x: Math.round(Math.random()*size/50)*50,
-            y: 0
-          }
+          catched()
           return
         }
 
@@ -58,6 +59,13 @@ function Game() {
         console.log(inter);
       }, inter);
       
+    }
+    function catched(){
+      enemyCoords = {
+        x: Math.round(Math.random()*size/50)*50,
+        y: 0
+      }
+      score++
     }
     function move(e){
       const canvas = canvasRef.current
@@ -82,10 +90,8 @@ function Game() {
        c.fillRect(playerCoords.x,playerCoords.y, blockSize, blockSize);
 
       if(JSON.stringify(enemyCoords) === JSON.stringify(playerCoords)){
-        enemyCoords = {
-          x: Math.round(Math.random()*size/50)*50,
-          y: 0
-        }
+        catched()
+        return;
       }
       
     }
