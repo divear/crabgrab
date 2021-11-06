@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import alien from "./imgs/alien.png"
+import alien1 from "./imgs/alien1.png"
 
 
 const l = Math.floor(Math.random() * 50);
@@ -7,7 +8,11 @@ const canvasColor = 'hsl(240, 50%,' + l + '%)';
 var score = 0
 
 const enemyImg = new Image()
-enemyImg.src = alien
+if(Math.round(Math.random())){
+  enemyImg.src = alien
+}else{
+  enemyImg.src = alien1
+}
 
 
 const blockSize = 50
@@ -61,6 +66,11 @@ function Game() {
       
     }
     function catched(){
+      if(Math.round(Math.random())){
+        enemyImg.src = alien
+      }else{
+        enemyImg.src = alien1
+      }      
       enemyCoords = {
         x: Math.round(Math.random()*size/50)*50,
         y: 0
