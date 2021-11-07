@@ -25,7 +25,7 @@ var enemyCoords = {}
 
 
 function Game() {
-    const [inter, setInter] = useState(500)
+    const [inter, setInter] = useState(130)
     const canvasRef = useRef(null)
 
     //initial draw
@@ -85,12 +85,16 @@ function Game() {
       switch(e.key || e){
         case "a":
         case "A":
-          if(playerCoords.x <= 0) break
+          if(playerCoords.x <= 0) {
+            playerCoords.x = size 
+          }
           playerCoords.x -= blockSize
           break;
         case "d":
         case "D":
-          if(playerCoords.x >= size-50) break
+          if(playerCoords.x >= size-50) {
+            playerCoords.x = -50
+          }
           playerCoords.x += blockSize
           break;
         default:
