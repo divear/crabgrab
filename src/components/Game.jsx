@@ -16,7 +16,8 @@ if(Math.round(Math.random())){
 
 
 const blockSize = 50
-var size = Math.round(window.innerHeight/140)*(blockSize*2.7)
+var size = Math.round(100*window.innerHeight/blockSize)
+var height = window.innerHeight -50
 var playerCoords = {
   x: Math.round(size/50)*25,
   y: 600
@@ -25,7 +26,7 @@ var enemyCoords = {}
 
 
 function Game() {
-    const [inter, setInter] = useState(130)
+    const [inter, setInter] = useState(1300)
     const canvasRef = useRef(null)
 
     //initial draw
@@ -48,7 +49,7 @@ function Game() {
           x: enemyCoords.x,
           y: enemyCoords.y + blockSize
         }
-        if(enemyCoords.y > size){
+        if(enemyCoords.y > height){
           localStorage.setItem("score", score)
           window.location = "fail"
           return
@@ -60,8 +61,6 @@ function Game() {
         }
 
         c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
-        setInter(inter+10)
-        console.log(inter);
       }, inter);
       
     }
@@ -123,7 +122,7 @@ function Game() {
         id="canvas"
         ref={canvasRef}
         width={size}
-        height={size}
+        height={height}
         />
         </div>
     )
