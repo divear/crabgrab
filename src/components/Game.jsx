@@ -6,6 +6,7 @@ import alien1 from "./imgs/alien1.png"
 const l = Math.floor(Math.random() * 50);
 const canvasColor = 'hsl(240, 50%,' + l + '%)';
 var score = 0
+const inter = 200
 
 const enemyImg = new Image()
 if(Math.round(Math.random())){
@@ -26,7 +27,6 @@ var enemyCoords = {}
 
 
 function Game() {
-    const [inter, setInter] = useState(1300)
     const canvasRef = useRef(null)
 
     //initial draw
