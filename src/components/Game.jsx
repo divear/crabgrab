@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import alien from "./imgs/alien.png"
 import alien1 from "./imgs/alien1.png"
+import player from "./imgs/player.png"
 
 
 const l = Math.floor(Math.random() * 50);
@@ -14,6 +15,8 @@ if(Math.round(Math.random())){
 }else{
   enemyImg.src = alien1
 }
+const playerImg = new Image()
+playerImg.src = player
 
 
 const blockSize = 50
@@ -28,11 +31,11 @@ var enemyCoords = {}
 
 function Game() {
     const canvasRef = useRef(null)
-
+    console.log("cau")
     //initial draw
     const draw = (c) => {
       c.fillStyle = "#378f83"
-      c.fillRect(playerCoords.x,playerCoords.y,blockSize,blockSize)
+      c.drawImage(playerImg, playerCoords.x,playerCoords.y,blockSize,blockSize)
       c.fillStyle = "red"
 
       enemyCoords = {
@@ -43,6 +46,7 @@ function Game() {
 
       
       setInterval(() => {
+
         c.fillStyle = "red"
         c.clearRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
         enemyCoords = {
@@ -100,7 +104,7 @@ function Game() {
           break
         }
         c.fillStyle = "#378f83"
-       c.fillRect(playerCoords.x,playerCoords.y, blockSize, blockSize);
+       c.drawImage(playerImg, playerCoords.x,playerCoords.y, blockSize, blockSize);
 
       if(JSON.stringify(enemyCoords) === JSON.stringify(playerCoords)){
         catched()
