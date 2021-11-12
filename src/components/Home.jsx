@@ -9,8 +9,7 @@ function Home() {
     window.document.addEventListener('keypress',e => again(e))
     return (
         <div>
-            <title>Catch game</title>
-            <h1>Catch game</h1>
+            <title>Crab grab</title>
             <button onClick={()=> again(null)}>play</button>
         </div>
     )

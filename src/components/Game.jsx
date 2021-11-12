@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import alien from "./imgs/alien.png"
 import alien1 from "./imgs/alien1.png"
-import player from "./imgs/player.png"
+import player from "./imgs/crab.png"
 
 
 const l = Math.floor(Math.random() * 50);
@@ -20,11 +20,11 @@ playerImg.src = player
 
 
 const blockSize = 50
-var size = Math.round(100*window.innerHeight/blockSize)
+var size = Math.round(window.innerHeight/blockSize)*100
 var height = window.innerHeight -50
 var playerCoords = {
   x: Math.round(size/50)*25,
-  y: 600
+  y: 700
 }
 var enemyCoords = {}
 
@@ -119,7 +119,7 @@ function Game() {
       draw(context)
     }, [])
     return (
-        <div>
+        <div className="game">
         <title>Catch game</title>
         <canvas
         style={{backgroundColor: canvasColor}}

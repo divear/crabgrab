@@ -4,6 +4,8 @@
 body{
   background-color: black;
   color: white;
+  overflow: hidden;
+
 }
 *{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,4 +22,17 @@ button{
   background-color: white;
   margin: auto;
   border: 0.1vw white solid;
+}
+.crab{
+  width: 3vw;
+}
+.homeButton{
+  text-decoration: none;
+  color: aliceblue;
+}
+.game{
+  overflow: hidden;
+}
+.gameOverText{
+  text-align: centerx;;
 }

@@ -13,7 +13,7 @@ function Fail() {
     return (
         <div>
             <title>Game over</title>
-            <h1>Game over</h1>
+            <h1 className="gameOverText">Game over</h1>
             <h1>Score: {score}</h1>
             <button onClick={()=> again(null)}>Try again.</button>
         </div>
