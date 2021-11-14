@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import alien from "./imgs/alien.png"
 import alien1 from "./imgs/alien1.png"
+import alien2 from "./imgs/alien2.png"
 import player from "./imgs/crab.png"
 
 
@@ -10,11 +11,13 @@ var score = 0
 const inter = 200
 
 const enemyImg = new Image()
-if(Math.round(Math.random())){
-  enemyImg.src = alien
-}else{
-  enemyImg.src = alien1
+const aliens = {
+  0: alien,
+  1: alien1,
+  2: alien2
 }
+enemyImg.src = aliens[Math.floor(Math.random()*4)]
+
 const playerImg = new Image()
 playerImg.src = player
 
@@ -69,11 +72,7 @@ function Game() {
       
     }
     function catched(){
-      if(Math.round(Math.random())){
-        enemyImg.src = alien
-      }else{
-        enemyImg.src = alien1
-      }      
+      enemyImg.src = aliens[Math.floor(Math.random()*4)]      
       enemyCoords = {
         x: Math.round(Math.random()*size/50)*50,
         y: 0

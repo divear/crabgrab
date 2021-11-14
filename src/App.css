@@ -36,3 +36,7 @@ button{
 .gameOverText{
   text-align: center;
 }
+.gameOverbigText{
+  font-size: 5vw;
+  margin: 1vw;
+}
