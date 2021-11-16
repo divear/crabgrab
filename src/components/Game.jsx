@@ -23,7 +23,10 @@ playerImg.src = player
 
 
 const blockSize = 50
-var size = Math.round(window.innerHeight/blockSize)*100
+var size = Math.round(window.innerWidth-10)
+if(window.innerWidth < 800){
+  size = Math.round(window.innerWidth-100)
+}
 
 var height = window.innerHeight -50
 var playerCoords = {
