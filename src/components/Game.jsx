@@ -23,16 +23,24 @@ playerImg.src = player
 
 
 const blockSize = 50
-var size = Math.round(window.innerWidth-10)
-if(window.innerWidth < 800){
-  size = Math.round(window.innerWidth-100)
-}
-
+var size = Math.round(window.innerWidth/100)*100
 var height = window.innerHeight -50
+
 var playerCoords = {
   x: Math.round(size/50)*25,
   y: 700
 }
+
+if(window.innerWidth < 800){
+  size = Math.round(window.innerWidth/100)*100
+  height = window.innerHeight
+  playerCoords = {
+    x: Math.round(size/50)*25,
+    y: 600
+  }
+}
+
+
 var enemyCoords = {}
 
 
@@ -41,20 +49,16 @@ function Game() {
     console.log("cau")
     //initial draw
     const draw = (c) => {
-      c.fillStyle = "#378f83"
-      c.drawImage(playerImg, playerCoords.x,playerCoords.y,blockSize,blockSize)
-      c.fillStyle = "red"
+      playerImg && c.drawImage(playerImg, playerCoords.x,playerCoords.y,blockSize,blockSize)
 
       enemyCoords = {
         x: Math.round(Math.random()*size/50)*50,
         y: 0
       }
-      c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+      enemyImg && c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
 
       
       setInterval(() => {
-
-        c.fillStyle = "red"
         c.clearRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
         enemyCoords = {
           x: enemyCoords.x,
@@ -71,12 +75,12 @@ function Game() {
           return
         }
 
-        c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+        enemyImg && c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
       }, inter);
       
     }
     function catched(){
-      enemyImg.src = aliens[Math.floor(Math.random()*4)]      
+      enemyImg.src = aliens[Math.floor(Math.random()*4)]
       enemyCoords = {
         x: Math.round(Math.random()*size/50)*50,
         y: 0
@@ -106,8 +110,7 @@ function Game() {
         default:
           break
         }
-        c.fillStyle = "#378f83"
-       c.drawImage(playerImg, playerCoords.x,playerCoords.y, blockSize, blockSize);
+      playerImg && c.drawImage(playerImg, playerCoords.x,playerCoords.y, blockSize, blockSize);
 
       if(JSON.stringify(enemyCoords) === JSON.stringify(playerCoords)){
         catched()
