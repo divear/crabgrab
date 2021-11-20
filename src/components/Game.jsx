@@ -75,7 +75,13 @@ function Game() {
           return
         }
 
-        enemyImg && c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+        try {
+          enemyImg && c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+        } catch (error) {
+          //i know this is dumb, im sorry
+          c.fillStyle = "red"
+          c.fillRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+        }
       }, inter);
       
     }
