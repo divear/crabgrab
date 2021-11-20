@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import alien from "./imgs/alien.png"
 import alien1 from "./imgs/alien1.png"
 import alien2 from "./imgs/alien2.png"
@@ -59,6 +59,10 @@ function Game() {
 
       
       setInterval(() => {
+        c.clearRect(150, 50,150,60)
+        c.fillStyle = "white"
+        c.font = "5vw Arial"
+        c.fillText(score, 200, 100)
         c.clearRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
         enemyCoords = {
           x: enemyCoords.x,
@@ -92,6 +96,7 @@ function Game() {
         y: 0
       }
       score++
+
     }
     function move(e){
       const canvas = canvasRef.current
