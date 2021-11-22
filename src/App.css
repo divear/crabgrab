@@ -65,17 +65,28 @@ button{
     position: absolute;
     background-color: rgba(255, 0, 0, 0.24);
     width: 50vw;
-    height: 200vw;
-    top: 25vw;
+    height: 600vw;
+    top: 0;
     z-index: 999;
   }
   .right{
     left: 50vw;
     position: absolute;
-    background-color: rgba(0, 0, 255, 0.075);
+    background-color: rgba(0, 255, 42, 0.418);
     width: 50vw;
-    height: 200vw;
-    top: 25vw;
+    height: 600vw;
+    top: 0;
     z-index: 999;
+  }
+  .homeDiv{
+    font-size: 2vw;
+    top: 0vw;
+    height: 1vw;
+  }
+  .homeButton{
+    top: -55vw;
+  }
+  .crab{
+    width: 2vw;
   }
 }

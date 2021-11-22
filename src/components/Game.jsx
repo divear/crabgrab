@@ -133,18 +133,18 @@ function Game() {
     }, [])
     return (
         <div className="game">
-        <title>Catch game</title>
-        <div onClick={()=>move("a")} className="left"/>
-        <div onClick={()=>move("d")} className="right"/>
+          <title>Catch game</title>
+          <div onClick={()=>move("a")} className="left"/>
+          <div onClick={()=>move("d")} className="right"/>
 
 
-        <canvas
-        style={{backgroundColor: canvasColor}}
-        id="canvas"
-        ref={canvasRef}
-        width={size}
-        height={height}
-        />
+          <canvas
+          style={{backgroundColor: canvasColor}}
+          id="canvas"
+          ref={canvasRef}
+          width={size}
+          height={height}
+          />
         </div>
     )
 }
