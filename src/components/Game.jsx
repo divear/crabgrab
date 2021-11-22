@@ -40,15 +40,13 @@ if(window.innerWidth < 800){
   }
 }
 
-
 var enemyCoords = {}
 
 
 function Game() {
     const canvasRef = useRef(null)
-    console.log("cau")
     //initial draw
-    const draw = (c) => {
+    function draw (c){
       playerImg && c.drawImage(playerImg, playerCoords.x,playerCoords.y,blockSize,blockSize)
 
       enemyCoords = {
@@ -59,7 +57,7 @@ function Game() {
 
       
       setInterval(() => {
-        c.clearRect(150, 50,150,60)
+        c.clearRect(150, 30,300,200)
         c.fillStyle = "white"
         c.font = "5vw Arial"
         c.fillText(score, 200, 100)
@@ -73,12 +71,10 @@ function Game() {
           window.location = "fail"
           return
         }
-
         if(JSON.stringify(enemyCoords) === JSON.stringify(playerCoords)){
           catched()
           return
         }
-
         try {
           enemyImg && c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
         } catch (error) {
@@ -138,6 +134,10 @@ function Game() {
     return (
         <div className="game">
         <title>Catch game</title>
+        <div onClick={()=>move("a")} className="left"/>
+        <div onClick={()=>move("d")} className="right"/>
+
+
         <canvas
         style={{backgroundColor: canvasColor}}
         id="canvas"
