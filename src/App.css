@@ -38,6 +38,9 @@ button{
   font-size: 5vw;
   margin: 1vw;
 }
+.no{
+  display: none;
+}
 
 
 @media only screen and (max-width: 800px) {
@@ -58,12 +61,13 @@ button{
   }
   #canvas{
     position: absolute;
-    margin-left: -1vw;
+    /* margin-left: 10vw; */
+    margin: auto;
     border: none;
   }
   .left{
     position: absolute;
-    background-color: rgba(255, 0, 0, 0.24);
+    /* background-color: rgba(255, 0, 0, 0.24); */
     width: 50vw;
     height: 600vw;
     top: 0;
@@ -72,7 +76,7 @@ button{
   .right{
     left: 50vw;
     position: absolute;
-    background-color: rgba(0, 255, 42, 0.418);
+    /* background-color: rgba(0, 255, 42, 0.418); */
     width: 50vw;
     height: 600vw;
     top: 0;

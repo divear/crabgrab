@@ -9,6 +9,7 @@ const l = Math.floor(Math.random() * 50);
 const canvasColor = 'hsl(240, 50%,' + l + '%)';
 var score = 0
 const inter = 200
+const bestScore = localStorage.getItem("bestScore")
 
 const enemyImg = new Image()
 const aliens = {
@@ -23,8 +24,8 @@ playerImg.src = player
 
 
 const blockSize = 50
-var size = Math.round(window.innerWidth/100)*100
-var height = window.innerHeight -50
+let size = Math.round(window.innerWidth/100)*100
+let height = window.innerHeight -50
 
 var playerCoords = {
   x: Math.round(size/50)*25,
@@ -32,7 +33,7 @@ var playerCoords = {
 }
 
 if(window.innerWidth < 800){
-  size = Math.round(window.innerWidth/100)*100
+  size = (Math.round(window.innerWidth/100)*100)-100
   height = window.innerHeight
   playerCoords = {
     x: Math.round(size/50)*25,
@@ -50,7 +51,7 @@ function Game() {
       playerImg && c.drawImage(playerImg, playerCoords.x,playerCoords.y,blockSize,blockSize)
 
       enemyCoords = {
-        x: Math.round(Math.random()*size/50)*50,
+        x: Math.round(Math.random()*(size-50)/50)*50,
         y: 0
       }
       enemyImg && c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
@@ -67,6 +68,10 @@ function Game() {
           y: enemyCoords.y + blockSize
         }
         if(enemyCoords.y > height){
+          if(score > bestScore || !bestScore){
+            localStorage.setItem("previousBest" , bestScore)
+            localStorage.setItem("bestScore", score)
+          }
           localStorage.setItem("score", score)
           window.location = "fail"
           return
@@ -88,13 +93,14 @@ function Game() {
     function catched(){
       enemyImg.src = aliens[Math.floor(Math.random()*4)]
       enemyCoords = {
-        x: Math.round(Math.random()*size/50)*50,
+        x: Math.round(Math.random()*(size-50)/50)*50,
         y: 0
       }
       score++
 
     }
     function move(e){
+    
       const canvas = canvasRef.current
       const c = canvas.getContext('2d');
       c.clearRect(playerCoords.x, playerCoords.y, blockSize, blockSize);
