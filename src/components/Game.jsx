@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import alien from "./imgs/alien.png"
 import alien1 from "./imgs/alien1.png"
 import alien2 from "./imgs/alien2.png"
+import alien3 from "./imgs/alien3.png"
 import player from "./imgs/crab.png"
 
 
@@ -12,12 +13,8 @@ const inter = 200
 const bestScore = localStorage.getItem("bestScore")
 
 const enemyImg = new Image()
-const aliens = {
-  0: alien,
-  1: alien1,
-  2: alien2
-}
-enemyImg.src = aliens[Math.floor(Math.random()*4)]
+const aliens = [alien,alien1,alien2,alien3]
+enemyImg.src = aliens[Math.floor(Math.random()*5)]
 
 const playerImg = new Image()
 playerImg.src = player
@@ -68,7 +65,7 @@ function Game() {
           y: enemyCoords.y + blockSize
         }
         if(enemyCoords.y > height){
-          if(score > bestScore || !bestScore){
+          if(score >= bestScore || !bestScore){
             localStorage.setItem("previousBest" , bestScore)
             localStorage.setItem("bestScore", score)
           }

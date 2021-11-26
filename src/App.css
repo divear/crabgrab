@@ -41,6 +41,9 @@ button{
 .no{
   display: none;
 }
+.best{
+  color: gold;
+}
 
 
 @media only screen and (max-width: 800px) {

@@ -14,8 +14,8 @@ function Fail() {
         <div className="gameOverText">
             <title>Game over</title>
             <h1 className="gameOverbigText">Game over</h1>
-            <h1>Score: {score}</h1>
-            <p>{bestScore === score ? "Previous b" : "B"}est score: {bestScore === score ? previousBest : bestScore}</p>
+            <h1 className={bestScore === score ? "best" : ""}>Score: {score}</h1>
+            <p>{bestScore === score ? "Previous r" : "R"}ecord: {bestScore === score ? previousBest : bestScore}</p>
             <button onClick={()=> again(null)}>Try again.</button>
         </div>
     )
