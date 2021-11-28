@@ -9,7 +9,10 @@ import player from "./imgs/crab.png"
 const l = Math.floor(Math.random() * 50);
 const canvasColor = 'hsl(240, 50%,' + l + '%)';
 var score = 0
-const inter = 200
+
+//SPEED OF THE ENEMIES//
+let inter = 2000
+
 const bestScore = localStorage.getItem("bestScore")
 
 const enemyImg = new Image()
@@ -51,7 +54,11 @@ function Game() {
         x: Math.round(Math.random()*(size-50)/50)*50,
         y: 0
       }
-      enemyImg && c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+      try {
+        c.drawImage(enemyImg, enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+      } catch (error) {
+        console.log(error);
+      }
 
       
       setInterval(() => {
@@ -101,7 +108,14 @@ function Game() {
       const canvas = canvasRef.current
       const c = canvas.getContext('2d');
       c.clearRect(playerCoords.x, playerCoords.y, blockSize, blockSize);
-  
+      console.log(inter);
+
+      if(e.charCode >= 49 && e.charCode <= 57){
+        inter = 2000 
+        inter = inter/e.key
+        c.clearRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+        draw(c)
+      }
       switch(e.key || e){
         case "a":
         case "A":

@@ -11,6 +11,8 @@ function Home() {
         <div>
             <title>Crab grab</title>
             <button onClick={()=> again(null)}>play</button>
+
+            <p>Move with A and D to move, press 1-9 to increase the speed.</p>
         </div>
     )
 }
