@@ -108,14 +108,7 @@ function Game() {
       const canvas = canvasRef.current
       const c = canvas.getContext('2d');
       c.clearRect(playerCoords.x, playerCoords.y, blockSize, blockSize);
-      console.log(inter);
 
-      if(e.charCode >= 49 && e.charCode <= 57){
-        inter = 2000 
-        inter = inter/e.key
-        c.clearRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
-        draw(c)
-      }
       switch(e.key || e){
         case "a":
         case "A":
@@ -131,9 +124,18 @@ function Game() {
           }
           playerCoords.x += blockSize
           break;
+        case "+":
+          inter -=100
+          c.clearRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+          draw(c)
+        case "-":
+          inter +=100
+          c.clearRect(enemyCoords.x,enemyCoords.y,blockSize,blockSize)
+          draw(c)
         default:
           break
         }
+      console.log(inter);
       playerImg && c.drawImage(playerImg, playerCoords.x,playerCoords.y, blockSize, blockSize);
 
       if(JSON.stringify(enemyCoords) === JSON.stringify(playerCoords)){
