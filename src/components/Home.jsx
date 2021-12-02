@@ -12,7 +12,9 @@ function Home() {
             <title>Crab grab</title>
             <button onClick={()=> again(null)}>play</button>
 
-            <p>Move with A and D, press <span className="symbol">+</span> to increase the speed <span className="symbol">-</span> to decrease it.</p>
+            <p>Move with {window.innerWidth < 830 
+            ? "clicking the sides of the screen" 
+            : "A and D, press + to increase the speed - to decrease it."}</p>
         </div>
     )
 }

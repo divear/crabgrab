@@ -32,7 +32,7 @@ var playerCoords = {
   y: 700
 }
 
-if(window.innerWidth < 800){
+if(window.innerWidth < 820){
   size = (Math.round(window.innerWidth/100)*100)-100
   height = window.innerHeight
   playerCoords = {
