@@ -29,6 +29,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    <h1>Lukáš Odehnal 2021-2022</h1>
     </>
   );
 }
